@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>start</title>
+  <link rel="stylesheet" href="/src/style.css">
+
+</head>
+
+<body>
+  <!-- 加载动画 -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader"></div>
+  </div>
+
+
+  <div class="music-control">
+    <button class="music-toggle" id="musicToggle" title="背景音乐开关">🔇</button>
+    <input type="range" class="volume-slider" id="volumeSlider" min="0" max="1" step="0.1" value="0.5">
+  </div>
+
+
+  <div class="music-indicator" id="musicIndicator">
+    <span class="icon">🎵</span>
+    <span>背景音乐播放中...</span>
+  </div>
+
+  <!-- 主菜单界面 -->
+  <div id="mainMenu" class="screen active">
+    <div class="particles" id="particles"></div>
+    <div class="menu-content">
+      <h1 class="game-title">消灭星星</h1>
+      <button class="start-btn" id="startBtn">开始游戏</button>
+    </div>
+  </div>
+
+  <!-- 游戏界面 -->
+  <div id="gameScreen" class="screen hidden">
+    <div class="container">
+      <header>
+        <h1>消灭星星</h1>
+        <p>点击相同颜色的星星组来消除它们，获得更高分数！</p>
+      </header>
+
+      <div class="game-info">
+        <div class="score-container">
+          <h3>得分</h3>
+          <div class="score">0</div>
+        </div>
+        <div class="stars-container">
+          <h3>剩余星星</h3>
+          <div class="stars-count">100</div>
+        </div>
+        <div class="level-container">
+          <h3>等级</h3>
+          <div class="level">1</div>
+        </div>
+      </div>
+
+      <div class="game-board" id="gameBoard">
+        <!-- 游戏棋盘将通过JS生成 -->
+      </div>
+
+      <div class="controls">
+        <button id="restart">重新开始</button>
+        <button id="hint">提示 (3)</button>
+        <button id="backToMenu">返回菜单</button>
+      </div>
+
+      <div class="instructions">
+        <h3>游戏规则：</h3>
+        <p>1. 点击至少2个相邻的同色星星可以消除它们</p>
+        <p>2. 消除的星星越多，获得的分数越高（分数 = 数量×数量×5）</p>
+        <p>3. 消除后，上方的星星会下落，左侧的星星会右移填补空缺</p>
+        <p>4. 当没有相邻的同色星星时，游戏结束</p>
+        <p>5. 使用"提示"按钮可以高亮显示可消除的星星组（最多3次）</p>
+      </div>
+    </div>
+
+    <!-- 游戏结束弹窗 -->
+    <div class="game-over" id="gameOver">
+      <div class="game-over-content">
+        <h2>游戏结束！</h2>
+        <p>你成功消除了所有可消除的星星！</p>
+        <div class="final-score" id="finalScore">0</div>
+        <button id="restartGame">重新开始</button>
+        <button id="menuAfterGame">返回菜单</button>
+      </div>
+    </div>
+  </div>
+
+
+  <audio id="bgMusic" loop preload="auto">
+    <source src="/audio/maze.mp3" type="audio/mp3">
+  </audio>
+
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
